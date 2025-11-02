@@ -42,7 +42,7 @@ def get_video_ids(playlistId):
         while True:
 
             url = base_url
-            print(pageToken)
+
             if pageToken:
                 url += f'&pageToken={pageToken}'
 
@@ -69,5 +69,5 @@ def get_video_ids(playlistId):
 
 if __name__ == '__main__':
     playlistId = get_playlist_id()
-    print(get_video_ids(playlistId))
+    get_video_ids(playlistId)
         
