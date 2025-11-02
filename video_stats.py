@@ -22,7 +22,7 @@ def get_playlist_id():
 
         channel_playlistID = channel_items["contentDetails"]["relatedPlaylists"]['uploads']
 
-        print(channel_playlistID)
+        #print(channel_playlistID)
 
         return channel_playlistID
     
@@ -42,9 +42,9 @@ def get_video_ids(playlistId):
         while True:
 
             url = base_url
-
+            print(pageToken)
             if pageToken:
-                url += f'pageToken={pageToken}'
+                url += f'&pageToken={pageToken}'
 
             response = requests.get(url)
 
@@ -61,7 +61,7 @@ def get_video_ids(playlistId):
             if not pageToken:
                 break
 
-            return video_ids
+        return video_ids
 
     except requests.exceptions.RequestException as e:
         raise e  
@@ -69,5 +69,5 @@ def get_video_ids(playlistId):
 
 if __name__ == '__main__':
     playlistId = get_playlist_id()
-    get_video_ids(playlistId)
+    print(get_video_ids(playlistId))
         
